@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MusicAPI.Data;
 using MusicAPI.Helpers;
 using MusicAPI.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace MusicAPI.Controllers
 {
@@ -16,10 +17,12 @@ namespace MusicAPI.Controllers
     public class ArtistsController : ControllerBase
     {
         private ApiDbContext dbcontext;
+        private readonly IConfiguration _configuration;
 
         public ArtistsController(ApiDbContext dbContext)
         {
             dbcontext = dbContext;
+            var value = _configuration["laarkeyvault"];
         }
 
         // GET: api/<ArtistsController>

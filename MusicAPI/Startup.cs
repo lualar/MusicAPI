@@ -31,8 +31,16 @@ namespace MusicAPI
 
             services.AddControllers();
             services.AddMvc().AddXmlSerializerFormatters();
-            services.AddDbContext<ApiDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-            //services.AddDbContext<ApiDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+            String sPassword = Configuration["musicAdmin"];
+            String sServer = Configuration["musicServer"];
+            String sUserID = Configuration["musicadminUser"];
+
+            string DbConnection = "Server=tcp:musicapidb.database.windows.net,1433;" +
+                    "Initial Catalog=MusicApiDB;Persist Security Info=False;User ID=" + sUserID +
+                    "; Password=" + sPassword +
+                    ";MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+            services.AddDbContext<ApiDbContext>(option => option.UseSqlServer(DbConnection));
 
             services.AddSwaggerGen(c =>
             {
