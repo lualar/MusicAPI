@@ -40,6 +40,9 @@ namespace MusicAPI
                     "; Password=" + sPassword +
                     ";MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
+            APIBlobConnection.sBlobAccName = Configuration["BlobAccName"];
+            APIBlobConnection.sBlobAccKey = Configuration["BlobAccKey"];
+
             services.AddDbContext<ApiDbContext>(option => option.UseSqlServer(DbConnection));
 
             services.AddSwaggerGen(c =>

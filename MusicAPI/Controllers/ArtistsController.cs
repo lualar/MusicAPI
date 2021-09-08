@@ -22,7 +22,6 @@ namespace MusicAPI.Controllers
         public ArtistsController(ApiDbContext dbContext)
         {
             dbcontext = dbContext;
-            var value = _configuration["laarkeyvault"];
         }
 
         // GET: api/<ArtistsController>

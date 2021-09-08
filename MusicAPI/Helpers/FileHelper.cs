@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using MusicAPI.Data;
 
 namespace MusicAPI.Helpers
 {
@@ -13,8 +15,10 @@ namespace MusicAPI.Helpers
     {
         public static async Task<string> UploadImage(IFormFile file)
         {
+            
+
             //Azure connection string
-            string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=laarmusicstorage;AccountKey=ZD+WhQ9CY3zEif7qLU6hgca/i8JIthBoWU01iB65NBPpIxSdXJG5VRqhN0XDT/9h1vEnqWwFHgaSFnswj0LEPA==;EndpointSuffix=core.windows.net";
+            string ConnectionString = "DefaultEndpointsProtocol=https;AccountName="+ APIBlobConnection.sBlobAccName + ";AccountKey="+ APIBlobConnection.sBlobAccKey + ";EndpointSuffix=core.windows.net";
             string ContainerName = "songscover";
 
             //inicio de upload del file a Azure
@@ -32,7 +36,7 @@ namespace MusicAPI.Helpers
         public static async Task<string> UploadAudio(IFormFile file)
         {
             //Azure connection string
-            string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=laarmusicstorage;AccountKey=ZD+WhQ9CY3zEif7qLU6hgca/i8JIthBoWU01iB65NBPpIxSdXJG5VRqhN0XDT/9h1vEnqWwFHgaSFnswj0LEPA==;EndpointSuffix=core.windows.net";
+            string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=" + APIBlobConnection.sBlobAccName + ";AccountKey=" + APIBlobConnection.sBlobAccKey + ";EndpointSuffix=core.windows.net";
             string ContainerName = "audiofiles";
 
             //inicio de upload del file a Azure
