@@ -17,7 +17,6 @@ namespace MusicAPI.Controllers
     public class ArtistsController : ControllerBase
     {
         private ApiDbContext dbcontext;
-        private readonly IConfiguration _configuration;
 
         public ArtistsController(ApiDbContext dbContext)
         {
