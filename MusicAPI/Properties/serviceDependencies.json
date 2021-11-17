@@ -3,6 +3,21 @@
     "secrets1": {
       "type": "secrets",
       "connectionId": "VaultUri"
+    },
+    "storage1": {
+      "type": "storage",
+      "connectionId": "StorageConnection"
+    },
+    "secrets2": {
+      "type": "secrets"
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings"
+    },
+    "appInsights1": {
+      "type": "appInsights",
+      "connectionId": null
     }
   }
 }

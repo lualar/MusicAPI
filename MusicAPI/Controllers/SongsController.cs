@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using MusicAPI.Data;
 using MusicAPI.Helpers;
 using MusicAPI.Models;
+using Microsoft.ApplicationInsights;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace MusicAPI.Controllers
 {
@@ -17,16 +19,19 @@ namespace MusicAPI.Controllers
     public class SongsController : ControllerBase
     {
         private ApiDbContext dbcontext;
+        private TelemetryClient aiClient;
 
-        public SongsController(ApiDbContext dbContext)
+        public SongsController(ApiDbContext dbContext, TelemetryClient aiClient)
         {
             dbcontext = dbContext;
+            this.aiClient = aiClient;
         }
 
         // GET: api/<SongsController>
         [HttpGet]
         public async Task<IActionResult> Get(int? pageNumber, int? pageSize)
         {
+            this.aiClient.TrackEvent("Get Songs");
             int currentPageNumber = pageNumber ?? 1;
             int currentPageSize = pageSize ?? 5;
             var songs = await (from song in dbcontext.Songs
@@ -45,7 +50,7 @@ namespace MusicAPI.Controllers
         public async Task<IActionResult> Get(int id)
         {
             var song = await dbcontext.Songs.FindAsync(id);
-
+            this.aiClient.TrackEvent("Get Songs");
             if (song == null)
                 return BadRequest(StatusCodes.Status204NoContent);
             return Ok(song);
@@ -54,6 +59,8 @@ namespace MusicAPI.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> FeaturedSongs()
         {
+            this.aiClient.TrackEvent("Get Songs");
+
             var songs = await (from song in dbcontext.Songs
                                where song.IsFeatured == true
                                select new
@@ -69,6 +76,8 @@ namespace MusicAPI.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> NewSongs()
         {
+            this.aiClient.TrackEvent("Get Songs");
+
             var songs = await (from song in dbcontext.Songs
                                orderby song.UploadDate descending
                                select new
@@ -85,6 +94,8 @@ namespace MusicAPI.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> SearchSongs(string query)
         {
+            this.aiClient.TrackEvent("Get Songs");
+
             var songs = await (from song in dbcontext.Songs
                                where song.Title.StartsWith(query)
                                select new

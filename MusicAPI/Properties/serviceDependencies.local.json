@@ -5,6 +5,27 @@
       "type": "secrets.keyVault",
       "connectionId": "VaultUri",
       "secretStore": null
+    },
+    "storage1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/laarmusicstorage",
+      "type": "storage.azure",
+      "connectionId": "StorageConnection",
+      "secretStore": "AzureKeyVault"
+    },
+    "secrets2": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/musicapidb/databases/MusicApiDB",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings",
+      "secretStore": "LocalSecretsFile"
+    },
+    "appInsights1": {
+      "resourceId": null,
+      "type": "appInsights.sdk",
+      "connectionId": null,
+      "secretStore": null
     }
   }
 }
