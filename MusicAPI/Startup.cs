@@ -58,6 +58,7 @@ namespace MusicAPI
                 builder.AddBlobServiceClient(Configuration["StorageConnection:blob"], preferMsi: true);
                 builder.AddQueueServiceClient(Configuration["StorageConnection:queue"], preferMsi: true);
             });
+            
             services.AddApplicationInsightsTelemetry();
         }
 

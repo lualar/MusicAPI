@@ -17,7 +17,7 @@
     },
     "appInsights1": {
       "type": "appInsights",
-      "connectionId": null
+      "connectionId": "APPINSIGHTS_CONNECTIONSTRING"
     }
   }
 }

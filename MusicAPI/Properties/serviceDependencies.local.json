@@ -22,10 +22,10 @@
       "secretStore": "LocalSecretsFile"
     },
     "appInsights1": {
-      "resourceId": null,
-      "type": "appInsights.sdk",
-      "connectionId": null,
-      "secretStore": null
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/microsoft.insights/components/laarmusicapi",
+      "type": "appInsights.azure",
+      "connectionId": "APPINSIGHTS_CONNECTIONSTRING",
+      "secretStore": "LocalSecretsFile"
     }
   }
 }

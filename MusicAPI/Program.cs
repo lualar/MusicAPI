@@ -14,8 +14,6 @@ namespace MusicAPI
 {
     public class Program
     {
-        private TelemetryClient aiClient;
-
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

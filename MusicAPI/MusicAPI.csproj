@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>a897f800-6924-446d-ac2c-b576e32eaedb</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/94943029-5ee9-41bd-9c87-143e9c909561/resourceGroups/webAppMusicApi/providers/microsoft.insights/components/laarmusicapi</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
